@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+DIR="${1:-cstat}"
+gawk -f charstat.awk $DIR/*.stat | sort -nr -k2 -t$'\t'

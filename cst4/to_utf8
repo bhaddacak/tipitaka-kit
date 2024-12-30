@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+indir=${1:-xml}
+outdir="${indir}_utf8"
+[ -d "$outdir" ] || mkdir "$outdir"
+
+count=0
+for item in "$indir"/*.xml
+do
+	outfile=`basename "$item"`
+	iconv -f UTF-16 -t UTF-8 < "$item" | sed 's/UTF-16/UTF-8/' > "$outdir/$outfile"
+	((count++))
+done
+echo "$count file(s) processed"

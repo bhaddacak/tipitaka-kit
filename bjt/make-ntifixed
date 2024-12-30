@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+srcdir=${1:-roman_clean_text}
+if [ ! -d "$srcdir" ]; then
+	echo "Source directory does not exist"
+	exit 1
+fi
+desdir="nti_fixed"
+[ -d $desdir ] || mkdir $desdir
+
+count=0
+for item in $srcdir/*.json
+do
+	name=`basename $item`
+	sed -f fixnti.sed "$item" > "$desdir/$name"
+	echo $name
+	((count++))
+done
+
+echo "$count file(s) processed"

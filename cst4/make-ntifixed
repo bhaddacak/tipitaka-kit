@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+srcdir=${1:-roman_xml_utf8}
+if [ ! -d "$srcdir" ]; then
+	echo "Source directory does not exist"
+	exit 1
+fi
+desdir="nti_fixed"
+[ -d $desdir ] || mkdir $desdir
+
+count=0
+for item in $srcdir/*.xml
+do
+	name=`basename $item`
+	sed -f fixnti.sed "$item" > "$desdir/$name"
+	echo $name
+	((count++))
+done
+
+for xsl in $srcdir/*.xsl
+do
+	[ -e "$xsl" ] && cp "$xsl" "$desdir"
+done
+
+echo "$count file(s) processed"
+echo "Do not forget to do some manual work!"

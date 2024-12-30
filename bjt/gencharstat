@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+INDIR=""
+OUTDIR="cstat"
+target=""
+
+while [[ -n "$1" ]]; do 
+	case "$1" in 
+		-h | --help)
+			echo "Usage: ./gencharstat <input-dir>"
+			echo "       ./gencharstat -f <input-file>"
+			exit 0
+			;;
+		-f)
+			shift 
+			target="$1"
+			;; 
+		*)
+			INDIR="$1"
+			;; 
+	esac 
+	shift 
+done
+
+function analyze {
+	file=`basename $1`
+	cat $1 | awk -f gencharstat.awk | sort > "$OUTDIR/$file.stat"
+}
+
+if [ -z "$target" ]; then
+	if [ -d "$INDIR" ]; then
+		[ -d "$OUTDIR" ] || mkdir "$OUTDIR"
+		for file in "$INDIR"/*.json
+		do
+			echo "$file"
+			analyze "$file"
+		done
+	else
+		echo "Input directory does not exist"
+		exit 1
+	fi
+elif [ -e "$target" ]; then
+	[ -d "$OUTDIR" ] || mkdir "$OUTDIR"
+	echo "$target"
+	analyze "$target"	
+else
+	echo "The target file does not exist"
+	exit 1
+fi
