@@ -5,7 +5,7 @@
 
 This project grew out of my attempt to utilize Tipiṭaka collections in `Pāli Platform 3` (PP3). A similar approach can be found in my former [CST-Kit](https://github.com/bhaddacak/cst-kit), which is the base of CSTR collection in the program.
 
-The target corpora here by now are the CST4 XML data and the BJT collection. The former has a better edited version at [Tipitaka.org XML](https://github.com/vipassanatech/tipitaka-xml) maintained by [Vipassana Research Institute](https://tipitaka.org). The latter has its web base maintained by [Path Nirvana Foundation](https://pathnirvana.org) at this [Github](https://github.com/pathnirvana/tipitaka.lk/tree/master/public/static/text).
+The target corpora here by now are the CST4 XML data and the tipitaka.lk's BJT collection. The former has a better edited version at [Tipitaka.org XML](https://github.com/vipassanatech/tipitaka-xml) maintained by [Vipassana Research Institute](https://tipitaka.org). The latter has its web base maintained by [Path Nirvana Foundation](https://pathnirvana.org) at this [Github](https://github.com/pathnirvana/tipitaka.lk/tree/master/public/static/text).
 
 I will explain the process that I use to make these collections applicable to PP3 in a hope that anyone can do the job by himself/herself ahead of me when the corpora are updated.
 
@@ -124,7 +124,7 @@ To make use of the final product with PP3, zip the whole directory and rename it
 
 ## Buddha Jayanthi Tripitaka (BJT)
 
-Having several corpora for Pāli studies enables us to do textual comparison. If the texts are gathered into one place, it will be very convenient to students. The BJT collection maintained by *Path Nirvana Foundation* is well-organized and seems to be actively updated. So, this is another corpus we should use in our study. One problem with this corpus is it is available only in Sinhala script. To use these texts (285 totally), we have to do the following process:
+Having several corpora for Pāli studies enables us to do textual comparison. If the texts are gathered into one place, it will be very convenient to students. The tipitaka.lk's BJT collection maintained by *Path Nirvana Foundation* is well-organized and seems to be actively updated. So, this is another corpus we should use in our study. One problem with this corpus is it is available only in Sinhala script. To use these texts (285 totally), we have to do the following process:
 
 > 1. Clean up the text by removing Sinhalese translations and footnotes
 > 2. Do character analysis to the Sinhala source files (optional)

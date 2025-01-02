@@ -127,7 +127,7 @@ let consonantMap = {};
 for(let i=0; i<sinhalaConsonants.length; i++)
 	consonantMap[sinhalaConsonants[i]] = romanConsonantsStr[i];
 const inputdir = process.argv[2];
-const outPrefix = "sinhala_";
+const outPrefix = "roman_";
 const outdir = outPrefix + inputdir;
 if (!fs.existsSync(outdir))
 	fs.mkdirSync(outdir);
