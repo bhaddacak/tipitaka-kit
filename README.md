@@ -71,16 +71,15 @@ Thanks to standardization of Devanagari, the conversion from it to Roman is simp
 
 Here comes my system of conversion, called *least contamination method*. This is its specification:
 
-> 1. Only Devanagari characters (not symbols) are converted to Roman.
+> 1. Only Devanagari characters (not symbols) are converted to Roman. No capitalization is applied.
 > 2. Punctuation marks and symbols are visually retained as follows:
 >     - Single daṇḍa (U+0964) is converted to vertical line (U+007C).
 >     - Double daṇḍa (U+0965) is converted to double vertical line (U+2016).
 >     - Abbreviation sign (U+0970) is converted to middle dot (U+00B7).
 >     - No full stop period is used. Dot (U+002E) appears only with numbers.
->     - No capitalization is applied.
 > 3. Some rare Sanskrit vowels have awkward treatments as follows:
->     - Vowel AI (U+0910, U+0948) is converted to ē (e with macron)
->     - Vowel AU (U+0914, U+094C) is converted to ō (o with macron)
+>     - Vowel AI (U+0910, U+0948) is converted to ē (e with macron).
+>     - Vowel AU (U+0914, U+094C) is converted to ō (o with macron).
 
 By the way of conversion above, we can convert Devanagari to Roman, then convert Roman back to Devanagari with 100% as original. Here is the command to use.
 
