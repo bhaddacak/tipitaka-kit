@@ -3,11 +3,11 @@
 
 # Tipiṭaka Kit
 
-This project grew out of my attempt to utilize Tipiṭaka collections in `Pāli Platform 3` (PP3). A similar approach can be found in my former [CST-Kit](https://github.com/bhaddacak/cst-kit), which is the base of CSTR collection in the program.
+This project grew out of my attempt to utilize Tipiṭaka collections in `Pāli Platform` (PP), started from version 3 and still applicable in version 4. A similar approach can be found in my former [CST-Kit](https://github.com/bhaddacak/cst-kit), which is the base of CSTR collection in the program.
 
 The target corpora here by now are the CST4 XML data and the tipitaka.lk's BJT collection. The former has a better edited version at [Tipitaka.org XML](https://github.com/vipassanatech/tipitaka-xml) maintained by [Vipassana Research Institute](https://tipitaka.org). The latter has its web base maintained by [Path Nirvana Foundation](https://pathnirvana.org) at this [Github](https://github.com/pathnirvana/tipitaka.lk/tree/master/public/static/text).
 
-I will explain the process that I use to make these collections applicable to PP3 in a hope that anyone can do the job by himself/herself ahead of me when the corpora are updated.
+I will explain the process that I use to make these collections applicable to PP in a hope that anyone can do the job by himself/herself ahead of me when the corpora are updated.
 
 ## Requirements
 
@@ -21,14 +21,14 @@ When data files are available, unpack them and move to the relevant directory (`
 
 ## CST4 XML Data
 
-This is the most complete collection we have. The very source of this collection is in Devanagari script. When applied to PP3, all files (217 totally) have to be converted to Roman script (explained below). Since the file structure in the CST4 bundle and Tipitaka-XML is identical, the process can be used with both sets. But the latter is preferable because it is more up-to-date. Here are the process:
+This is the most complete collection we have. The very source of this collection is in Devanagari script. When applied to PP, all files (217 totally) have to be converted to Roman script (explained below). Since the file structure in the CST4 bundle and Tipitaka-XML is identical, the process can be used with both sets. But the latter is preferable because it is more up-to-date. Here are the process:
 
 > 1. Change encoding of Devanagari source files to UTF-8
 > 2. Do character analysis to the Devanagari source files (optional)
 > 3. Convert to Roman script
 > 4. Do character analysis to the Roman source files (optional)
 > 5. Create nti-fixed version (if needed)
-> 6. Manually fix some nti instances (when nti-version is created)
+> 6. Manually fix some nti instances (when nti-fixed version is created)
 
 ### Changing to UTF-8
 
@@ -65,7 +65,7 @@ $ ./showcharstat | vim
 
 ### Roman script conversion
 
-I normally work with Roman script texts, simply because I cannot read other scripts except Thai. And I think most students of Pāli in the world feel comfortable in the same way. Roman script may have some inconvenient points in programming, such as the representations of one Pāli letter with two in the cases of 'kh', 'gh', 'ch', etc. But Roman script is the easiest to read and process.
+I normally work with Roman script texts, simply because I am barely able to read other scripts except Thai. And I think most students of Pāli in the world feel comfortable in the same way. Roman script may have some inconvenient points in programming, such as the representations of one Pāli letter with two in the cases of 'kh', 'gh', 'ch', etc. But Roman script is the easiest to read and process.
 
 Thanks to standardization of Devanagari, the conversion from it to Roman is simple and straightforward. However, with the different mechanics used in textual composition in both scripts, when converting Devanagari text to Roman with English system, we lose a lot of things. So, we cannot revert the conversion completely.
 
@@ -93,7 +93,7 @@ The `<xml-utf8-dir>` is the output directory of the UTF-8 conversion step descri
 
 When text is composed in Devanagari with a quote (’ or ”) inserted, particularly to mark an *iti* clause, it inevitably or naturally produces *’nti* or *”nti*. For example, *saṅgītinti* becomes *saṅgīti’nti*. When this text undergoes an indexing process, the quote breaks the word into two, hence *saṅgīti* and *nti*. As a result, the accusative marker, in this case, is lost. When we list terms later, we will find only *saṅgīti* not *saṅgītiṃ* as implied in the text.
 
-To fix this problem, we have to move the quote to the position after '*n*', hence *saṅgītin’ti*. By this way, after indexing we now get *saṅgītin*, which is easily converted back to *saṅgītiṃ*.
+To fix this problem, we have to move the quote to the position after '*n*', hence *saṅgītin’ti*. By this way, after indexing we now get *saṅgītin*, which is easily restored to *saṅgītiṃ*.
 
 Most if not all of Pāli corpora based on Devanagari or Sinhala (in BJT case) have this problem. And it seems there is no easy way to solve this. (The corpus of SuttaCentral does not have this problem.) Lucky us who work with Roman texts, we can fix this in an unexpectedly simple way.
 
@@ -119,7 +119,7 @@ $ node deva_to_roman.js <xml-utf8-dir>
 $ ./make_ntifixed <roman-dir>
 ```
 
-To make use of the final product with PP3, zip the whole directory and rename it to `cst4roman_utf8.zip`. Put the file in directory `data/text/cst4` of PP3.
+To make use of the final product with PP, zip the whole directory and rename it to `cst4roman_utf8.zip`. Put the file in directory `data/text/cst4` of PP.
 
 ## Buddha Jayanthi Tripitaka (BJT)
 
@@ -176,7 +176,7 @@ $ node sinh_to_roman.js <clean-text-dir>
 $ ./make_ntifixed <roman-dir>
 ```
 
-To make use of the final product with PP3, zip the whole directory and rename it to `bjt_pali.zip`. Put the file in directory `data/text/bjt` of PP3.
+To make use of the final product with PP, zip the whole directory and rename it to `bjt_pali.zip`. Put the file in directory `data/text/bjt` of PP.
 
 ## Notes on textual corrections
 

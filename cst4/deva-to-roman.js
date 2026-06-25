@@ -19,7 +19,7 @@
  *   - For the CST4 XML data with UTF-16 encoding,
  *     the files have to converted to UTF-8 before processed.
  *
- * Copyright (C) 2025 J. R. Bhaddacak 
+ * Copyright (C) 2025-2026 J. R. Bhaddacak 
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -51,6 +51,8 @@ const devaVirama = '\u{094D}';
 const devaPeriod = '\u{0964}';
 const devaDoublePeriod = '\u{0965}';
 const devaAbbrev = '\u{0970}';
+const devaVisarga = '\u{0903}';
+const devaRi = '\u{090B}';
 const devaConsonants = [
 	'\u{0915}', '\u{0916}', '\u{0917}', '\u{0918}', '\u{0919}',
 	'\u{091A}', '\u{091B}', '\u{091C}', '\u{091D}', '\u{091E}',
@@ -79,6 +81,10 @@ function devanagariToRoman(input) {
 			rch = '\u2016';
 		} else if(dch == devaAbbrev) {
 			rch = '\u00B7';
+		} else if(dch == devaVisarga) {
+			rch = 'ḥ';
+		} else if(dch == devaRi) {
+			rch = 'ṛ';
 		} else if(devaVowelsInd.indexOf(dch) >= 0) {
 			rch = indVowelMap[dch];
 		} else if(devaVowelsDep.indexOf(dch) >= 0 && dch != '\u0905') {
